@@ -1,0 +1,34 @@
+# Upstream train.py baseline. Provide data and run_dir before launching.
+# These settings are a memory probe, not a verified 24 GiB training guarantee.
+data:
+  train_data: ''
+  eval_data: ''
+  shuffle: true
+moshi_paths:
+  hf_repo_id: kyutai/moshiko-pytorch-bf16
+full_finetuning: false
+lora:
+  enable: true
+  rank: 16
+  scaling: 2.0
+  ft_embed: false
+param_dtype: bfloat16
+duration_sec: 10
+batch_size: 1
+num_microbatches: 8
+gradient_checkpointing: true
+first_codebook_weight_multiplier: 100.0
+text_padding_weight: 0.5
+optim:
+  lr: 2.0e-6
+  weight_decay: 0.1
+  pct_start: 0.05
+max_steps: 100
+seed: 0
+log_freq: 1
+do_eval: false
+eval_freq: 0
+do_ckpt: true
+ckpt_freq: 100
+save_adapters: true
+run_dir: ''

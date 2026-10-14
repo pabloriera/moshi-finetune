@@ -1,5 +1,9 @@
 # Moshi-Finetune
 
+Local Moshi-tiny work starts with [the incremental plan](DISTILLATION_PLAN.md)
+and [the runnable experiment guide](docs/distillation.md). The first two MVPs
+cover strict student configs, distillation losses, and CPU integration tests.
+
 <a target="_blank" href="https://colab.research.google.com/github//kyutai-labs/moshi-finetune/blob/main/tutorials/moshi_finetune.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>

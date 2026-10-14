@@ -1,0 +1,24 @@
+# Control: shrink temporal transformer while preserving the original depth LM.
+version: 1
+purpose: architecture
+teacher:
+  dim: 4096
+  num_layers: 32
+  num_heads: 32
+  depformer_dim: 1024
+  depformer_num_layers: 6
+  depformer_num_heads: 16
+student:
+  dim: 768
+  num_layers: 12
+  num_heads: 6
+  depformer_dim: 1024
+  depformer_num_layers: 6
+  depformer_num_heads: 16
+hidden:
+  student_layers: [4, 8, 12]
+  teacher_layers: [11, 22, 32]
+loss: {}
+training:
+  device: cpu
+  gradient_checkpointing: true

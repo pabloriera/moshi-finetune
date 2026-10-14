@@ -1,0 +1,35 @@
+# Shape proposal, not a pretrained model or a real-data training recipe.
+# Inspect on meta first. Smoke refuses this purpose and these model sizes.
+version: 1
+purpose: architecture
+teacher:
+  dim: 4096
+  num_layers: 32
+  num_heads: 32
+  depformer_dim: 1024
+  depformer_num_layers: 6
+  depformer_num_heads: 16
+student:
+  dim: 768
+  num_layers: 12
+  num_heads: 6  # Preserve the teacher's temporal head dimension of 128.
+  depformer_dim: 512
+  depformer_num_layers: 4
+  depformer_num_heads: 8  # Preserve the depth head dimension of 64.
+hidden:
+  student_layers: [4, 8, 12]
+  teacher_layers: [11, 22, 32]
+loss:
+  # Start at temperature 1; sweep later with the same validation set.
+  data_weight: 1.0
+  text_kl_weight: 1.0
+  audio_kl_weight: 1.0
+  hidden_weight: 0.1  # Ablate against 0 before adopting layer matching.
+  text_temperature: 1.0
+  audio_temperature: 1.0
+  text_padding_weight: 0.5
+  # A mild semantic-codebook emphasis; independent from upstream's 100x recipe.
+  audio_codebook_weights: [2.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+training:
+  device: cpu  # Inspection only; no large model allocation.
+  gradient_checkpointing: true

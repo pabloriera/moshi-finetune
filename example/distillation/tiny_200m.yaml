@@ -1,0 +1,24 @@
+# Aggressive shape proposal; compare against tiny_300m under the same budget.
+version: 1
+purpose: architecture
+teacher:
+  dim: 4096
+  num_layers: 32
+  num_heads: 32
+  depformer_dim: 1024
+  depformer_num_layers: 6
+  depformer_num_heads: 16
+student:
+  dim: 768
+  num_layers: 12
+  num_heads: 6
+  depformer_dim: 256
+  depformer_num_layers: 3
+  depformer_num_heads: 4
+hidden:
+  student_layers: [4, 8, 12]
+  teacher_layers: [11, 22, 32]
+loss: {}
+training:
+  device: cpu
+  gradient_checkpointing: true

@@ -45,8 +45,8 @@ dev = [
 # https://github.com/astral-sh/uv/issues/3898
 config-settings = { editable_mode = "compat" }
 
-[tool.setuptools]
-packages = ["finetune"]
+[tool.setuptools.packages.find]
+include = ["finetune*"]
 
 [tool.black]
 include = '\.pyi?$'

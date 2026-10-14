@@ -105,4 +105,9 @@ cython_debug/
 
 example/debug_configs/
 
+# Local experiment outputs and test caches
+runs/
+.pytest_cache/
+*.safetensors
+
 
